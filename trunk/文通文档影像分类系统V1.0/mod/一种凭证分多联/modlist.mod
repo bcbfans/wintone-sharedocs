@@ -1,0 +1,30 @@
+<Multi-Tmpl>
+<Version>Version 5.0</Version>
+<Tmpl-List>
+<Tmpl-Count>2</Tmpl-Count>
+<Tmpl0>第二联.mod</Tmpl0>
+<Tmpl1>第一联.mod</Tmpl1>
+</Tmpl-List>
+<Filter>
+<Count>5</Count>
+<Filter0>1</Filter0>
+<Filter1>2</Filter1>
+<Filter2>5</Filter2>
+<Filter3>3</Filter3>
+<Filter4>4</Filter4>
+</Filter>
+<Threshold>
+<Count>5</Count>
+<Threshold0>0.600000</Threshold0>
+<Threshold1>0.600000</Threshold1>
+<Threshold2>0.400000</Threshold2>
+<Threshold3>0.400000</Threshold3>
+<Threshold4>0.300000</Threshold4>
+</Threshold>
+<Multi-Tmpl-Attr>
+<OutPutType>0</OutPutType>
+<RejectInfo>Reject By All The Mods</RejectInfo>
+<bRotate180>FALSE</bRotate180>
+<bSkew>FALSE</bSkew>
+</Multi-Tmpl-Attr>
+</Multi-Tmpl>
