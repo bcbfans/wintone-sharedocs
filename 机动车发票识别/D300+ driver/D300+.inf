@@ -1,0 +1,185 @@
+[Version]
+LayoutFile=Layout.inf, Layout1.inf, Layout2.inf
+Signature="$CHICAGO$"
+Class=Image
+ClassGUID={6bdd1fc6-810f-11d0-bec7-08002be2092f}
+Provider=%Provider%
+;CatalogFile=D300+.cat
+DriverVer=02/15/2008
+
+[DestinationDirs]
+DefaultDestDir=11
+CopySys32.Files=10,SYSTEM32\DRIVERS
+Savepath.Image=30,D300+
+TWAIN.Driver=10,TWAIN_32\Avision\D300+
+Scanner.ICC=23
+
+[ControlFlags]
+; Remove comment from this line if all devices are PnP.
+ExcludeFromSelect=*
+
+[Manufacturer]
+%Mfg%=Models,ntamd64,ntia64
+
+[Models.ntia64]
+%USBDeviceDesc% = Scanner.USB,USB\VID_0638&PID_0ADA
+
+[Models.ntamd64]
+%USBDeviceDesc% = Scanner.USB,USB\VID_0638&PID_0ADA
+
+[Models]
+%USBDeviceDesc% = Scanner.USB,USB\VID_0638&PID_0ADA
+
+[Scanner.USB]
+SubClass=StillImage
+DeviceType=1
+DeviceSubType=0x1
+Capabilities=0x03
+Events=Scanner.USB.Events
+AddReg=Scanner.USB.AddReg
+;CopyFiles=CopySys32.Files,DefaultDestDir,TWAIN.Driver,Scanner.ICC,Savepath.Image
+CopyFiles=CopySys32.Files
+DeviceData=Scanner.USB.DeviceData
+ICMProfiles="sRGB Color Space Profile.icm"
+;PropertyPages="ls007.cpl,EnumStiPropPages"
+;VendorSetup="SetupExtme.dll,SetupEntryPoint"
+
+; Win2000 model section
+[Scanner.USB.NT]
+Include=sti.inf
+Needs=STI.USBSection
+SubClass=StillImage
+DeviceType=1
+DeviceSubType=0x1
+Capabilities=0x03
+Events=Scanner.USB.Events
+DeviceData=Scanner.USB.DeviceData
+AddReg=Scanner.USB.AddReg.NT
+;CopyFiles=CopySys32.Files,DefaultDestDir,TWAIN.Driver,Scanner.ICC,Savepath.Image
+;CopyFiles=CopySys32.Files
+ICMProfiles="sRGB Color Space Profile.icm"
+;PropertyPages="ls007.cpl,EnumStiPropPages"
+;RegisterDlls=Scanner.NT.RegisterDlls
+;UnRegisterDlls=Scanner.NT.RegisterDlls
+
+[Scanner.USB.DeviceData]
+TwainDS="D300+"
+Server=local
+UI Class ID={4DB1AD10-3391-11D2-9A33-00C04FA36145}
+
+[Scanner.USB.NT.Services]
+Include=sti.inf
+Needs=STI.USBSection.Services
+
+[Scanner.NT.RegisterDlls]
+; New Whistler Tag:  DefaultDir,Subdir,Driver,1=DllRegisterServer,2=DLLInstall.
+;11,,SetupExt.dll,2,,
+
+[Scanner.USB.Events]
+; These are events that this device supports
+Button1Changed="%Button1Changed%",{2F596C80-76EC-11da-AAFD-0050BA1ACA6F},Scanner Button Manager
+Button2Changed="%Button2Changed%",{2F596C81-76EC-11da-AAFD-0050BA1ACA6F},Scanner Button Manager
+Button3Changed="%Button3Changed%",{2F596C82-76EC-11da-AAFD-0050BA1ACA6F},Scanner Button Manager
+Button10Changed="%Button10Changed%",{D87C0866-DD6D-11d7-AAFB-0050BA1ACA6F},Scanner Button Manager
+
+[Scanner.USB.AddReg]
+HKR,,HardwareConfig,1,4
+HKR,,DevLoader,,*NTKERN
+HKR,,NTMPDriver,,USBSCAN.SYS
+;HKR,,DeviceType,1,1
+HKR,,DRIVERPATH,,%10%\TWAIN_32\Avision\D300+\D300+.dll
+HKR,,USDClass,,"{D68317E9-881C-4b15-8D50-33D76FFCAE0A}"
+HKCR,CLSID\{D68317E9-881C-4b15-8D50-33D76FFCAE0A},,,"Scanner Button Manager"
+HKCR,CLSID\{D68317E9-881C-4b15-8D50-33D76FFCAE0A}\InProcServer32,,,%11%\D300+.cpl
+HKCR,CLSID\{D68317E9-881C-4b15-8D50-33D76FFCAE0A}\InProcServer32,ThreadingModel,,"Both"
+HKLM,%reg_TWAIN_path%,"SAVEPATH",0x00000000,%30%\D300+"\"
+HKLM,%reg_TWAIN_path%,"DSLOC",0x00000000,%10%\TWAIN_32\Avision\D300+\Scanner.ini
+HKLM,%reg_TWAIN_path%,"TWAINPATH",0x00000000,%10%\TWAIN_32\Avision\D300+"\"
+HKLM,%reg_TWAIN_path%,"CMATCHINI",0x00000000,%10%\TWAIN_32\Avision\D300+\cmatch.ini
+HKLM,%reg_TWAIN_path%,"UILOC",0x00000000,%10%\TWAIN_32\Avision\D300+\advui.ini
+
+[Scanner.USB.AddReg.NT]
+HKR,,HardwareConfig,1,4
+HKR,,DevLoader,,*NTKERN
+;HKR,,NTMPDriver,,USBSCAN.SYS
+HKR,,DRIVERPATH,,%10%\TWAIN_32\Avision\D300+\D300+.dll
+HKR,,USDClass,,"{D68317E9-881C-4b15-8D50-33D76FFCAE29}"
+HKCR,CLSID\{D68317E9-881C-4b15-8D50-33D76FFCAE29},,,"Scanner Button Manager"
+HKCR,CLSID\{D68317E9-881C-4b15-8D50-33D76FFCAE29}\InProcServer32,,,%11%\D300+.cpl
+HKCR,CLSID\{D68317E9-881C-4b15-8D50-33D76FFCAE29}\InProcServer32,ThreadingModel,,"Both"
+HKLM,%reg_TWAIN_path%,"SAVEPATH",0x00000000,%30%\D300+"\"
+HKLM,%reg_TWAIN_path%,"DSLOC",0x00000000,%10%\TWAIN_32\Avision\D300+\Scanner.ini
+HKLM,%reg_TWAIN_path%,"TWAINPATH",0x00000000,%10%\TWAIN_32\Avision\D300+"\"
+HKLM,%reg_TWAIN_path%,"CMATCHINI",0x00000000,%10%\TWAIN_32\Avision\D300+\cmatch.ini
+HKLM,%reg_TWAIN_path%,"UILOC",0x00000000,%10%\TWAIN_32\Avision\D300+\advui.ini
+
+[CopySys32.Files]
+usbscan.sys,,,20
+
+[TWAIN.Driver]
+Advance.dll
+Advui.ini
+AVCMMS.dll
+Avscan_n.dll
+cmatch.ini
+logobmp.bmp
+Ls007.ini
+ls007.dll
+Ls007.ds
+negative.dll
+Twdsm_n.dll
+
+[Scanner.ICC]
+
+
+[Savepath.Image]
+Apsetup.ini
+Avscan32.ini
+Sample1.bmp
+
+
+[SourceDisksNames]
+1="D300+",,,
+
+[SourceDisksFiles]
+Advui.ini=1
+fbbm.exe=1
+Ls007.ini=1
+Advance.dll=1
+Apsetup.ini=1
+Avbmp32n.dll=1
+AVCMMS.dll=1
+Avscan_n.dll=1
+Avscan32.ini=1
+Cmatch.dll=1
+cmatch.ini=1
+Lfcmp80n.dll=1
+Lfbmp80n.dll=1
+Lffax80n.dll=1
+Lfimg80n.dll=1
+Lfpcx80n.dll=1
+Lftif80n.dll=1
+Lfwfx80n.dll=1
+logobmp.bmp=1
+ls007.cpl=1
+ls007.dll=1
+Ls007.ds=1
+Ltefx80n.dll=1
+Ltfil80n.dll=1
+Ltimg80n.dll=1
+Ltkrn80n.dll=1
+Lttwn80n.dll=1
+negative.dll=1
+Sample1.bmp=1
+setupext.dll=1
+Twdsm_n.dll=1
+
+[Strings]
+Provider="Avision"
+Mfg="Avision"
+USBDeviceDesc = "D300+"
+Button1Changed="Button_1"
+Button2Changed="Button_2"
+Button3Changed="Button_3"
+Button10Changed="Button_10"
+reg_TWAIN_path = "Software\AjaxData\TWAIN"
