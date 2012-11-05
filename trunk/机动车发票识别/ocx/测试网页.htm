@@ -1,0 +1,52 @@
+<html>
+<head><title>Web 表格识别</title></head>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+function Init()
+{
+	form1.exam1.Init(document.form1.strModPath.value);
+}
+
+function SelectScanner()
+{
+	form1.exam1.TwainSetSourceName("D300+",2);
+}
+
+function ScanAndRecognize()
+{
+	document.form1.strResult.innerText = form1.exam1.ScanRecognizeEx(document.form1.strImagePath.value, 2, 300, 0, 0, 1,0,0,0,0,644	,871,1,0,0);
+}	
+
+function Uninit()
+{
+	form1.exam1.UnInit();
+}
+
+</SCRIPT>
+
+<body>
+	<h1>Wintone 扫描识别 OCX 测试网页</h1>
+	<form name="form1">
+		<OBJECT
+			classid="clsid:966A3CD2-766E-46F2-9BEF-5556539F0D82"
+					width=0
+					height=0
+					id="exam1">
+		</OBJECT>
+		<table border="0" cellspacing="0" cellpadding="0" width="100%">
+			<tr>
+				模板路径:<input type="text" name="strModPath" value="E:\\启明信息\\mod\\机动车销售发票.mod" size="50"> <br />
+				图像路径:<input type="text" name="strImagePath" value="D:\\Image1.JPG" size="50"> <br />
+				识别结果:<input type="text" name="strResult" size = "50">
+			</tr>
+		</table>
+		<table>
+    	        <td> <input type="button" name="action21" value="初始化" onClick = Init()> </td>
+                <td> <input type="button" name="action22" value="选择扫描仪" onClick = SelectScanner()> </td>
+			    <td> <input type="button" name="action23" value="扫描并识别" onClick = ScanAndRecognize()> </td>
+			    <td> <input type="button" name="action24" value="释放" onClick = Uninit()> </td>
+		</table>
+	</form>
+</body>
+</html>
